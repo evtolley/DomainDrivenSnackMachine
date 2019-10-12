@@ -1,9 +1,11 @@
-﻿using System;
+﻿using EvansSnackMachine.Logic.Interfaces;
+using EvansSnackMachine.Logic.ValueObjects;
+using System;
 using System.Linq;
 
-namespace EvansSnackMachine.Logic
+namespace EvansSnackMachine.Logic.Entities
 {
-    public sealed class SnackMachine : Entity
+    public sealed class SnackMachine : Entity, ISnackMachine
     {
         public Money MoneyInside { get; private set; }
         public Money MoneyInTransaction { get; private set; }
@@ -12,6 +14,12 @@ namespace EvansSnackMachine.Logic
         {
             MoneyInside = Money.None;
             MoneyInTransaction = Money.None;
+        }
+
+        public SnackMachine(string id, Money moneyInside, Money moneyInTransaction) : base(id)
+        {
+            MoneyInside = moneyInside;
+            MoneyInTransaction = moneyInTransaction;
         }
        
         public void InsertMoney(Money money)

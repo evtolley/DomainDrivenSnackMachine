@@ -1,4 +1,4 @@
-using EvansSnackMachine.Logic;
+using EvansSnackMachine.Logic.ValueObjects;
 using FluentAssertions;
 using System;
 using Xunit;
@@ -143,6 +143,20 @@ namespace EvansSnackMachine.Tests
             };
 
             action.Should().Throw<InvalidOperationException>();
+        }
+
+        [Theory]
+        [InlineData(0, 0, 0, 0, 0, 0, "$0.00")]
+        [InlineData(1, 0, 0, 0, 0, 0, "$0.01")]
+        [InlineData(1, 2, 3, 0, 0, 0, "$0.96")]
+        [InlineData(1, 2, 3, 4, 0, 0, "$4.96")]
+        [InlineData(1, 2, 3, 4, 5, 0, "$29.96")]
+        [InlineData(1, 2, 3, 4, 5, 6, "$149.96")]
+        [InlineData(110, 0, 0, 0, 100, 0, "$501.10")]
+        public void To_String_Should_Format_Correctly(int one, int two, int three, int four, int five, int six, string expectedValue)
+        {
+            var money = new Money(one, two, three, four, five, six);
+            Assert.Equal(expectedValue, money.ToString());
         }
 
     }

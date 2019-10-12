@@ -1,7 +1,8 @@
-﻿using EvansSnackMachine.Logic;
-using System;
+﻿using System;
 using Xunit;
 using FluentAssertions;
+using EvansSnackMachine.Logic.Entities;
+using EvansSnackMachine.Logic.ValueObjects;
 
 namespace EvansSnackMachine.Tests
 {
@@ -63,6 +64,27 @@ namespace EvansSnackMachine.Tests
 
             machine.MoneyInTransaction.Should().Be(Money.None);
             Assert.Equal(6.01m, machine.MoneyInside.Amount);
+        }
+
+        [Fact]
+        public void Parameterless_Constructor_Should_Work()
+        {
+
+            SnackMachine machine = new SnackMachine();
+
+            machine.MoneyInTransaction.Should().Be(Money.None);
+            machine.MoneyInside.Should().Be(Money.None);
+        }
+
+        [Fact]
+        public void Money_Constructor_Should_Work()
+        {
+
+            SnackMachine machine = new SnackMachine("12345", Money.Dollar, Money.FiveDollar);
+
+            machine.Id.Should().Be("12345");
+            machine.MoneyInside.Should().Be(Money.Dollar);
+            machine.MoneyInTransaction.Should().Be(Money.FiveDollar);
         }
     }
 }

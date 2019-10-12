@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EvansSnackMachine.Logic
+namespace EvansSnackMachine.Logic.ValueObjects
 {
     public sealed class Money : ValueObject<Money>
     {
@@ -99,6 +99,11 @@ namespace EvansSnackMachine.Logic
                 hashcode = (hashcode * 397) ^ TwentyDollarCount;
                 return hashcode;
             }
+        }
+
+        public override string ToString()
+        {
+            return $@"${Amount.ToString("0.00")}";
         }
     }
 }

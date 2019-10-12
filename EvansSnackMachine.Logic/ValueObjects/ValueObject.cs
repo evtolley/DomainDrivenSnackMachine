@@ -1,4 +1,4 @@
-﻿namespace EvansSnackMachine.Logic
+﻿namespace EvansSnackMachine.Logic.ValueObjects
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

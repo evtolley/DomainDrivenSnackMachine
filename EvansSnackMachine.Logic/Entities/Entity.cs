@@ -1,8 +1,18 @@
-﻿namespace EvansSnackMachine.Logic
+﻿namespace EvansSnackMachine.Logic.Entities
 {
     public abstract class Entity
     {
-        public long Id { get; private set; }
+        public string Id { get; private set; }
+
+        public Entity()
+        {
+        }
+
+        public Entity(string id)
+        {
+            this.Id = id;
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as Entity;
@@ -18,11 +28,6 @@
             }
 
             if(GetType() != other.GetType())
-            {
-                return false;
-            }
-
-            if(Id == 0 || other.Id == 0)
             {
                 return false;
             }
