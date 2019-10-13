@@ -3,7 +3,6 @@ using EvansSnackMachine.Logic.Factories;
 using EvansSnackMachine.Logic.Interfaces;
 using EvansSnackMachine.Persistence.Entities;
 using MongoDB.Driver;
-using System;
 
 namespace EvansSnackMachine.Persistence.Repositories
 {
@@ -39,7 +38,7 @@ namespace EvansSnackMachine.Persistence.Repositories
         {
             var dbo = new SnackMachineDBO(machine);
             _snackMachines.UpdateOne(Builders<SnackMachineDBO>.Filter.Eq("Id", machine.Id), Builders<SnackMachineDBO>.Update.Set("MoneyInside", dbo.MoneyInside));
-            _snackMachines.UpdateOne(Builders<SnackMachineDBO>.Filter.Eq("Id", machine.Id), Builders<SnackMachineDBO>.Update.Set("MoneyInTransaction", dbo.MoneyInTransaction));
+            _snackMachines.UpdateOne(Builders<SnackMachineDBO>.Filter.Eq("Id", machine.Id), Builders<SnackMachineDBO>.Update.Set("AmountInTransaction", dbo.AmountInTransaction));
 
             return GetSnackMachine(machine.Id);
         }

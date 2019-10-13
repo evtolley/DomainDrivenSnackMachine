@@ -20,21 +20,6 @@ namespace EvansSnackMachine.WebApi.Controllers
             _snackMachineRepository = snackMachineRepository;
         }
 
-        [HttpGet]
-        [Route("{id}/AmountInTransaction")]
-        public IActionResult GetAmountInTransaction(string id)
-        {
-            try
-            {
-                var snackMachine = _snackMachineRepository.GetSnackMachine(id);
-                return Ok(snackMachine.MoneyInTransaction.ToString());
-            }
-            catch
-            {
-                return new BadRequestResult();
-            }
-        }
-
 
         [HttpGet]
         [Route("{id}/AmountInMachine")]
@@ -55,12 +40,12 @@ namespace EvansSnackMachine.WebApi.Controllers
 
         [HttpPost]
         [Route("{id}/BuySnack")]
-        public IActionResult BuySnack(string id)
+        public IActionResult BuySnack(string id, [FromBody]int position)
         {
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
-                snackMachine.BuySnack();
+                snackMachine.BuySnack(position);
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
             }

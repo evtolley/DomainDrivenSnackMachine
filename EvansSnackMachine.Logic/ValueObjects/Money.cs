@@ -53,6 +53,37 @@ namespace EvansSnackMachine.Logic.ValueObjects
             this.TwentyDollarCount = twentyDollarCount;
         }
 
+        public Money AllocateToReturn(decimal amount)
+        {
+            int twentyDollarCount = Math.Min((int)(amount / 20), TwentyDollarCount);
+            amount = amount - twentyDollarCount * 20;
+
+            int fiveDollarCount = Math.Min((int)(amount / 5), FiveDollarCount);
+            amount = amount - fiveDollarCount * 5;
+
+            int dollarCount = Math.Min((int)(amount / 1), OneDollarCount);
+            amount = amount - dollarCount;
+
+            int quarterCount = Math.Min((int)(amount / .25m), QuarterCount);
+            amount = amount - quarterCount * .25m;
+
+            int tenCentCount = Math.Min((int)(amount / .10m), TenCentCount);
+            amount = amount - tenCentCount * .10m;
+
+            int oneCentCount = Math.Min((int)(amount / .01m), OneCentCount);
+            amount = amount - oneCentCount * .01m;
+
+            return new Money(
+                oneCentCount,
+                tenCentCount,
+                quarterCount,
+                dollarCount,
+                fiveDollarCount,
+                twentyDollarCount
+                );
+
+        }
+
         public static Money operator +(Money money1, Money money2)
         {
             return new Money(
@@ -63,6 +94,18 @@ namespace EvansSnackMachine.Logic.ValueObjects
                 money1.FiveDollarCount + money2.FiveDollarCount,
                 money1.TwentyDollarCount + money2.TwentyDollarCount
                 );
+        }
+
+        public static Money operator *(Money money1, int multiplier)
+        {
+            return new Money(
+               money1.OneCentCount * multiplier,
+               money1.TenCentCount * multiplier,
+               money1.QuarterCount * multiplier,
+               money1.OneDollarCount * multiplier,
+               money1.FiveDollarCount * multiplier,
+               money1.TwentyDollarCount * multiplier
+               );
         }
 
         public static Money operator -(Money money1, Money money2)

@@ -1,4 +1,3 @@
-using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.Interfaces;
 using EvansSnackMachine.Persistence;
 using EvansSnackMachine.Persistence.Repositories;

@@ -1,3 +1,4 @@
+using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.ValueObjects;
 using FluentAssertions;
 using System;
@@ -159,5 +160,18 @@ namespace EvansSnackMachine.Tests
             Assert.Equal(expectedValue, money.ToString());
         }
 
+        [Fact]
+        public void Allocate_To_Return_Should_Return_Largest_Denominations_Possible()
+        {
+            var money = new Money(425,1,3,4,5,6);
+            var moneyToReturn = money.AllocateToReturn(4.25m);
+
+            moneyToReturn.TwentyDollarCount.Should().Be(0);
+            moneyToReturn.FiveDollarCount.Should().Be(0);
+            moneyToReturn.OneDollarCount.Should().Be(4);
+            moneyToReturn.QuarterCount.Should().Be(1);
+            moneyToReturn.TenCentCount.Should().Be(0);
+            moneyToReturn.OneCentCount.Should().Be(0);       
+        }
     }
 }
