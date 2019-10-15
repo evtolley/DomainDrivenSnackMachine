@@ -61,7 +61,6 @@ namespace EvansSnackMachine.WebApi
 
         private void RegisterMongoMappings()
         {
-            //bson mappings
             BsonClassMap.RegisterClassMap<SnackMachine>(cm =>
             {
                 cm.MapField(x => x.AmountInTransaction);
@@ -79,6 +78,28 @@ namespace EvansSnackMachine.WebApi
                 cm.MapProperty(x => x.FiveDollarCount);
                 cm.MapProperty(x => x.TwentyDollarCount);
                 cm.MapProperty(x => x.Amount);
+            });
+
+            BsonClassMap.RegisterClassMap<Slot>(cm =>
+            {         
+                cm.MapCreator(x => new Slot(x.Position, x.SnackPile));
+                cm.MapProperty(x => x.Position);
+                cm.MapProperty(x => x.SnackPile);
+            });
+
+            BsonClassMap.RegisterClassMap<SnackPile>(cm =>
+            {
+                cm.MapCreator(x => new SnackPile(x.Snack, x.Quantity, x.Price));
+                cm.MapProperty(x => x.Snack);
+                cm.MapProperty(x => x.Quantity);
+                cm.MapProperty(x => x.Price);
+            });
+
+
+            BsonClassMap.RegisterClassMap<Snack>(cm =>
+            {
+                cm.MapCreator(x => new Snack(x.Name));
+                cm.MapProperty(x => x.Name);
             });
         }
     }

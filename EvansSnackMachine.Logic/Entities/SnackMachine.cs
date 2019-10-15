@@ -10,7 +10,7 @@ namespace EvansSnackMachine.Logic.Entities
     {
         public Money MoneyInside { get; private set; }
         public decimal AmountInTransaction { get; private set; }
-        public IReadOnlyList<Slot> Slots { get; }
+        public IReadOnlyList<Slot> Slots { get; private set; }
 
         public SnackMachine()
         {

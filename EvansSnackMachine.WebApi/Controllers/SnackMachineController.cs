@@ -4,7 +4,6 @@ using EvansSnackMachine.Logic.ValueObjects;
 using EvansSnackMachine.WebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace EvansSnackMachine.WebApi.Controllers
 {
@@ -49,7 +48,7 @@ namespace EvansSnackMachine.WebApi.Controllers
 
         [HttpPost]
         [Route("{id}/BuySnack")]
-        public IActionResult BuySnack(string id, [FromBody]int position)
+        public IActionResult BuySnack(string id, [FromBody]BuySnackViewModel model)
         {
             try
             {
@@ -60,7 +59,7 @@ namespace EvansSnackMachine.WebApi.Controllers
                     return new NotFoundResult();
                 }
 
-                snackMachine.BuySnack(position);
+                snackMachine.BuySnack(model.Position);
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
             }
@@ -111,7 +110,7 @@ namespace EvansSnackMachine.WebApi.Controllers
                 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
             }
-            catch(Exception ex)
+            catch
             {
                 return new BadRequestResult();
             }
