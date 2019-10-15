@@ -20,22 +20,17 @@ namespace EvansSnackMachine.Logic.Entities
             //initializing empty slots
             Slots = new List<Slot>()
             {
-                new Slot(this, null, 1),
-                new Slot(this, null, 2),
-                new Slot(this, null, 3),
+                new Slot(1),
+                new Slot(2),
+                new Slot(3)
             };
         }
 
-        public SnackMachine(string id, Money moneyInside, decimal amountInTransaction) : base(id)
+        public SnackMachine(string id, Money moneyInside, decimal amountInTransaction, IList<Slot> slots) : base(id)
         {
             MoneyInside = moneyInside;
             AmountInTransaction = amountInTransaction;
-
-            //TO DO: Make a constructor for factory
-            //Slots = new List<Slot>()
-            //{
-            //    new Slot(this, null, 0, 0m, 1)
-            //}
+            Slots = slots;
         }
 
         public void LoadMoney(Money money)
@@ -96,6 +91,18 @@ namespace EvansSnackMachine.Logic.Entities
         public SnackPile GetSnackPile(int position)
         {
             return GetSlot(position).SnackPile;
+        }
+
+        public List<Slot> GetSlots()
+        {
+            var returnSlots = new List<Slot>();
+
+            foreach(var slot in this.Slots)
+            {
+                returnSlots.Add(slot);
+            }
+
+            return returnSlots;
         }
 
         private Slot GetSlot(int position)

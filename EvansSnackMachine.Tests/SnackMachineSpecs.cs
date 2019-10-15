@@ -3,8 +3,8 @@ using Xunit;
 using FluentAssertions;
 using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.ValueObjects;
-using System.Linq;
 using EvansSnackMachine.Logic.Exceptions;
+using System.Collections.Generic;
 
 namespace EvansSnackMachine.Tests
 {
@@ -82,12 +82,13 @@ namespace EvansSnackMachine.Tests
         [Fact]
         public void Money_Constructor_Should_Work()
         {
-
-            SnackMachine machine = new SnackMachine("12345", Money.Dollar, 5m);
+            var slots = new List<Slot>() { new Slot(2) };
+            SnackMachine machine = new SnackMachine("12345", Money.Dollar, 5m, slots);
 
             machine.Id.Should().Be("12345");
             machine.MoneyInside.Should().Be(Money.Dollar);
             machine.AmountInTransaction.Should().Be(5m);
+            machine.GetSlots().Count.Should().Be(1);
         }
 
         [Fact]

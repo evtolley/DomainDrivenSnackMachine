@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "snackmachine/5da11e0b3dfdea0f5cb321f5/amountinmachine",
+      "launchUrl": "snackmachine/create",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

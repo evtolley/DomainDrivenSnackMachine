@@ -1,5 +1,5 @@
 ﻿using EvansSnackMachine.Logic.ValueObjects;
-using EvansSnackMachine.Persistence.Entities;
+using EvansSnackMachine.Persistence.Models;
 
 namespace EvansSnackMachine.Logic.Factories
 {

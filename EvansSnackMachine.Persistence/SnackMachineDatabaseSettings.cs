@@ -2,8 +2,9 @@
 {
     public class SnackMachineDatabaseSettings : ISnackMachineDatabaseSettings
     {
-        public string SnackMachineCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
+        public string SnackCollectionName { get; set; }
+        public string SnackMachineCollectionName { get; set; }
     }
 }

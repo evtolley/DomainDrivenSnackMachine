@@ -1,7 +1,5 @@
 ﻿using EvansSnackMachine.Logic.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EvansSnackMachine.Logic.ValueObjects
 {

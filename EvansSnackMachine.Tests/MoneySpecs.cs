@@ -1,4 +1,3 @@
-using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.ValueObjects;
 using FluentAssertions;
 using System;

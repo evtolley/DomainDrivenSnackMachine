@@ -1,6 +1,6 @@
 ﻿using EvansSnackMachine.Logic.ValueObjects;
 
-namespace EvansSnackMachine.Persistence.Entities
+namespace EvansSnackMachine.Persistence.Models
 {
     public class MoneyDBO
     {
