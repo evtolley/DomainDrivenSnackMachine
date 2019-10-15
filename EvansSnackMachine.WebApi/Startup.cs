@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Conventions;
 
 namespace EvansSnackMachine.WebApi
 {
@@ -46,6 +45,22 @@ namespace EvansSnackMachine.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            this.RegisterMongoMappings();
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+
+        private void RegisterMongoMappings()
+        {
             //bson mappings
             BsonClassMap.RegisterClassMap<SnackMachine>(cm =>
             {
@@ -64,18 +79,6 @@ namespace EvansSnackMachine.WebApi
                 cm.MapProperty(x => x.FiveDollarCount);
                 cm.MapProperty(x => x.TwentyDollarCount);
                 cm.MapProperty(x => x.Amount);
-            });
-
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
             });
         }
     }

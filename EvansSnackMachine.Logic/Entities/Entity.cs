@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EvansSnackMachine.Logic.Entities
+﻿namespace EvansSnackMachine.Logic.Entities
 {
     public abstract class Entity
     {

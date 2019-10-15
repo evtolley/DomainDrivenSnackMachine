@@ -1,8 +1,6 @@
 ﻿using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.Interfaces;
-using EvansSnackMachine.Persistence.Models;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System.Linq;
 
