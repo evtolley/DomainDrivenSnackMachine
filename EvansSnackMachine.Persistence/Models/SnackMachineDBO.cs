@@ -2,7 +2,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EvansSnackMachine.Persistence.Models
 {
@@ -27,9 +26,7 @@ namespace EvansSnackMachine.Persistence.Models
             this.Id = machine.Id;
             this.MoneyInside = new MoneyDBO(machine.MoneyInside);
             this.AmountInTransaction = machine.AmountInTransaction;
-            this.Slots = machine.GetSlots()
-                .Select(slot => new SlotDBO(slot))
-                .ToList();
+            this.Slots = new List<SlotDBO>();
         }
     }
 }

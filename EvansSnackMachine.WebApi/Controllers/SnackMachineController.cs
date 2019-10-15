@@ -31,6 +31,12 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if (snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 return Ok(snackMachine.MoneyInside.ToString());
             }
             catch
@@ -48,6 +54,12 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if (snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 snackMachine.BuySnack(position);
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
@@ -65,6 +77,12 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if (snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 snackMachine.ReturnMoney();
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
@@ -83,11 +101,17 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if(snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 snackMachine.InsertMoney(money.ConvertToMoney());
                 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
             }
-            catch
+            catch(Exception ex)
             {
                 return new BadRequestResult();
             }
@@ -100,6 +124,12 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if (snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 snackMachine.LoadSnacks(model.Position, new SnackPile(new Snack(model.SnackName), model.Quantity, model.Price));
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));
@@ -117,6 +147,12 @@ namespace EvansSnackMachine.WebApi.Controllers
             try
             {
                 var snackMachine = _snackMachineRepository.GetSnackMachine(id);
+
+                if (snackMachine == null)
+                {
+                    return new NotFoundResult();
+                }
+
                 snackMachine.LoadMoney(money.ConvertToMoney());
 
                 return Ok(_snackMachineRepository.UpdateSnackMachine(snackMachine));

@@ -1,9 +1,6 @@
 ﻿using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.ValueObjects;
 using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace EvansSnackMachine.Tests

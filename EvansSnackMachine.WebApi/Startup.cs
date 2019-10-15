@@ -1,4 +1,6 @@
+using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.Interfaces;
+using EvansSnackMachine.Logic.ValueObjects;
 using EvansSnackMachine.Persistence;
 using EvansSnackMachine.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Conventions;
 
 namespace EvansSnackMachine.WebApi
 {
@@ -41,6 +45,27 @@ namespace EvansSnackMachine.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //bson mappings
+            BsonClassMap.RegisterClassMap<SnackMachine>(cm =>
+            {
+                cm.MapField(x => x.AmountInTransaction);
+                cm.MapField(x => x.MoneyInside);
+                cm.MapField(x => x.Slots);
+            });
+
+            BsonClassMap.RegisterClassMap<Money>(cm =>
+            {
+                cm.MapCreator(x => new Money(x.OneCentCount, x.TenCentCount, x.QuarterCount, x.OneDollarCount, x.FiveDollarCount, x.TwentyDollarCount));
+                cm.MapProperty(x => x.OneCentCount);
+                cm.MapProperty(x => x.TenCentCount);
+                cm.MapProperty(x => x.QuarterCount);
+                cm.MapProperty(x => x.OneDollarCount);
+                cm.MapProperty(x => x.FiveDollarCount);
+                cm.MapProperty(x => x.TwentyDollarCount);
+                cm.MapProperty(x => x.Amount);
+            });
+
 
             app.UseHttpsRedirection();
 

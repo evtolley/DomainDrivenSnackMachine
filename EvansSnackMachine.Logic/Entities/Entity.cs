@@ -1,8 +1,10 @@
-﻿namespace EvansSnackMachine.Logic.Entities
+﻿using System;
+
+namespace EvansSnackMachine.Logic.Entities
 {
     public abstract class Entity
     {
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         public Entity()
         {

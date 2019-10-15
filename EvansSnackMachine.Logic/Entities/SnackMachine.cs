@@ -10,7 +10,7 @@ namespace EvansSnackMachine.Logic.Entities
     {
         public Money MoneyInside { get; private set; }
         public decimal AmountInTransaction { get; private set; }
-        private IList<Slot> Slots { get; }
+        public IReadOnlyList<Slot> Slots { get; }
 
         public SnackMachine()
         {
@@ -26,7 +26,7 @@ namespace EvansSnackMachine.Logic.Entities
             };
         }
 
-        public SnackMachine(string id, Money moneyInside, decimal amountInTransaction, IList<Slot> slots) : base(id)
+        public SnackMachine(string id, Money moneyInside, decimal amountInTransaction, IReadOnlyList<Slot> slots) : base(id)
         {
             MoneyInside = moneyInside;
             AmountInTransaction = amountInTransaction;
@@ -91,18 +91,6 @@ namespace EvansSnackMachine.Logic.Entities
         public SnackPile GetSnackPile(int position)
         {
             return GetSlot(position).SnackPile;
-        }
-
-        public List<Slot> GetSlots()
-        {
-            var returnSlots = new List<Slot>();
-
-            foreach(var slot in this.Slots)
-            {
-                returnSlots.Add(slot);
-            }
-
-            return returnSlots;
         }
 
         private Slot GetSlot(int position)

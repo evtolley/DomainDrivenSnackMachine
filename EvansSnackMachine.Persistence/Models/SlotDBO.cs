@@ -1,8 +1,4 @@
 ﻿using EvansSnackMachine.Logic.Entities;
-using EvansSnackMachine.Persistence.Factories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EvansSnackMachine.Persistence.Models
 {

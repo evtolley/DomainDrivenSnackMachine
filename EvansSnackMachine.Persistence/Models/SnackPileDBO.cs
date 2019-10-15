@@ -1,5 +1,4 @@
-﻿using EvansSnackMachine.Logic.Entities;
-using EvansSnackMachine.Logic.ValueObjects;
+﻿using EvansSnackMachine.Logic.ValueObjects;
 
 namespace EvansSnackMachine.Persistence.Models
 {

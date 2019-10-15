@@ -88,7 +88,7 @@ namespace EvansSnackMachine.Tests
             machine.Id.Should().Be("12345");
             machine.MoneyInside.Should().Be(Money.Dollar);
             machine.AmountInTransaction.Should().Be(5m);
-            machine.GetSlots().Count.Should().Be(1);
+            machine.Slots.Count.Should().Be(1);
         }
 
         [Fact]
