@@ -1,6 +1,6 @@
-﻿using EvansSnackMachine.Logic.Entities;
+﻿using SharedKernel;
 
-namespace EvansSnackMachine.Persistence
+namespace Persistence.Shared
 {
     public static class MongoExtensions
     {

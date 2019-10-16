@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace EvansSnackMachine.Persistence
+namespace Persistence.Shared
 {
     public class MongoObject<T>
     {

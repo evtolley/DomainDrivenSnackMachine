@@ -1,4 +1,4 @@
-﻿namespace EvansSnackMachine.Persistence
+﻿namespace Persistence.Shared
 {
     public class SnackMachineDatabaseSettings : ISnackMachineDatabaseSettings
     {
@@ -6,5 +6,6 @@
         public string DatabaseName { get; set; }
         public string SnackCollectionName { get; set; }
         public string SnackMachineCollectionName { get; set; }
+        public string ATMCollectionName { get; set; }
     }
 }

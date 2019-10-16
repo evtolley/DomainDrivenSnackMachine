@@ -1,4 +1,4 @@
-﻿namespace EvansSnackMachine.Logic.ValueObjects
+﻿namespace SharedKernel
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

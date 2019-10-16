@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EvansSnackMachine.Logic.ValueObjects
+namespace SharedKernel.ValueObjects
 {
     public sealed class Money : ValueObject<Money>
     {
@@ -55,6 +55,11 @@ namespace EvansSnackMachine.Logic.ValueObjects
 
         public Money AllocateToReturn(decimal amount)
         {
+            if (!CanAllocate(amount))
+            {
+                throw new InvalidOperationException();
+            }
+
             int twentyDollarCount = Math.Min((int)(amount / 20), TwentyDollarCount);
             amount = amount - twentyDollarCount * 20;
 
@@ -82,6 +87,12 @@ namespace EvansSnackMachine.Logic.ValueObjects
                 twentyDollarCount
                 );
 
+        }
+
+        public bool CanAllocate(decimal amount)
+        {
+            Money money = AllocateToReturn(amount);
+            return money.Amount == amount;
         }
 
         public static Money operator +(Money money1, Money money2)

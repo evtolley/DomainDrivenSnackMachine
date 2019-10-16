@@ -1,4 +1,5 @@
 ﻿using EvansSnackMachine.Logic.ValueObjects;
+using SharedKernel;
 
 namespace EvansSnackMachine.Logic.Entities
 {

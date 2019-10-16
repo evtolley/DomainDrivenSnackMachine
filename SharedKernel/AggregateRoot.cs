@@ -1,4 +1,4 @@
-﻿using EvansSnackMachine.Logic.Entities;
+﻿using SharedKernel;
 
 namespace EvansSnackMachine.Logic
 {

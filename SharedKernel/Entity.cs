@@ -1,4 +1,4 @@
-﻿namespace EvansSnackMachine.Logic.Entities
+﻿namespace SharedKernel
 {
     public abstract class Entity
     {

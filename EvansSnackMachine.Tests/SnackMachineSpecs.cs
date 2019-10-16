@@ -5,6 +5,7 @@ using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.ValueObjects;
 using EvansSnackMachine.Logic.Exceptions;
 using System.Collections.Generic;
+using SharedKernel.ValueObjects;
 
 namespace EvansSnackMachine.Tests
 {

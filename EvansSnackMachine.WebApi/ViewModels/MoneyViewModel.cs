@@ -1,4 +1,4 @@
-﻿using EvansSnackMachine.Logic.ValueObjects;
+﻿using SharedKernel.ValueObjects;
 
 namespace EvansSnackMachine.WebApi.ViewModels
 {

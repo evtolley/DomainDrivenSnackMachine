@@ -2,6 +2,7 @@
 using EvansSnackMachine.Logic.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Persistence.Shared;
 using System.Linq;
 
 namespace EvansSnackMachine.Persistence.Repositories

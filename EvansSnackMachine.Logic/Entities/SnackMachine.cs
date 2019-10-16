@@ -1,5 +1,6 @@
 ﻿using EvansSnackMachine.Logic.Exceptions;
 using EvansSnackMachine.Logic.ValueObjects;
+using SharedKernel.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

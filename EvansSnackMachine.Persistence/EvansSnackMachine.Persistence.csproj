@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EvansSnackMachine.Logic\EvansSnackMachine.Logic.csproj" />
+    <ProjectReference Include="..\Persistence.Shared\Persistence.Shared.csproj" />
   </ItemGroup>
 
 </Project>

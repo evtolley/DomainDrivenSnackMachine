@@ -1,5 +1,5 @@
-using EvansSnackMachine.Logic.ValueObjects;
 using FluentAssertions;
+using SharedKernel.ValueObjects;
 using System;
 using Xunit;
 

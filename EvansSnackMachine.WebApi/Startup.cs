@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization;
+using Persistence.Shared;
+using SharedKernel.ValueObjects;
 
 namespace EvansSnackMachine.WebApi
 {
