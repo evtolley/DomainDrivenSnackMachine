@@ -55,11 +55,6 @@ namespace SharedKernel.ValueObjects
 
         public Money AllocateToReturn(decimal amount)
         {
-            if (!CanAllocate(amount))
-            {
-                throw new InvalidOperationException();
-            }
-
             int twentyDollarCount = Math.Min((int)(amount / 20), TwentyDollarCount);
             amount = amount - twentyDollarCount * 20;
 

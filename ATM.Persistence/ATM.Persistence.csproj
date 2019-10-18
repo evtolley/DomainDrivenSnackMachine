@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATM.Logic\ATM.Logic.csproj" />
+    <ProjectReference Include="..\EvansSnackMachine.Logic\EvansSnackMachine.Logic.csproj" />
+    <ProjectReference Include="..\Persistence.Shared\Persistence.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,9 @@
+using ATM.Logic.Entities;
+using ATM.Logic.Interfaces;
+using ATM.Persistence;
 using EvansSnackMachine.Logic.Entities;
 using EvansSnackMachine.Logic.Interfaces;
 using EvansSnackMachine.Logic.ValueObjects;
-using EvansSnackMachine.Persistence;
 using EvansSnackMachine.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +39,7 @@ namespace EvansSnackMachine.WebApi
             services.AddControllers();
 
             services.AddScoped<ISnackMachineRepository, SnackMachineRepository>();
+            services.AddScoped<IATMRepository, ATMRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -102,6 +105,13 @@ namespace EvansSnackMachine.WebApi
             {
                 cm.MapCreator(x => new Snack(x.Name));
                 cm.MapProperty(x => x.Name);
+            });
+
+            BsonClassMap.RegisterClassMap<AutomatedTellerMachine>(cm =>
+            {
+                cm.MapCreator(x => new AutomatedTellerMachine(x.MoneyCharged, x.MoneyInside));
+                cm.MapField(x => x.MoneyCharged);
+                cm.MapField(x => x.MoneyInside);
             });
         }
     }

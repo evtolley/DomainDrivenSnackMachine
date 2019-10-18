@@ -2,13 +2,24 @@
 using SharedKernel.ValueObjects;
 using System;
 
-namespace ATM.Logic
+namespace ATM.Logic.Entities
 {
     public class AutomatedTellerMachine : AggregateRoot
     {
         private const decimal CommissionRate = .01m;
-        public Money MoneyInside { get; private set; } = Money.None;
+        public Money MoneyInside { get; private set; }
         public decimal MoneyCharged { get; private set; }
+
+        public AutomatedTellerMachine()
+        {
+            this.MoneyInside = Money.None;
+        }
+
+        public AutomatedTellerMachine(decimal moneyCharged, Money moneyInside)
+        {
+            this.MoneyCharged = moneyCharged;
+            this.MoneyInside = moneyInside;
+        }
 
         public void TakeMoney(decimal amount)
         {
@@ -59,7 +70,7 @@ namespace ATM.Logic
             }
 
 
-            return amount + commission;
+            return Math.Round(amount + commission, 2);
         }
     }
 }

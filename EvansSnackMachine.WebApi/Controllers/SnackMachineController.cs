@@ -24,8 +24,8 @@ namespace EvansSnackMachine.WebApi.Controllers
 
 
         [HttpGet]
-        [Route("{id}/AmountInMachine")]
-        public IActionResult GetAmountInMachine(string id)
+        [Route("{id}")]
+        public IActionResult GetSnackMachine(string id)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace EvansSnackMachine.WebApi.Controllers
                     return new NotFoundResult();
                 }
 
-                return Ok(snackMachine.MoneyInside.ToString());
+                return Ok(snackMachine);
             }
             catch
             {

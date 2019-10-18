@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ATM.Logic\ATM.Logic.csproj" />
+    <ProjectReference Include="..\ATM.Persistence\ATM.Persistence.csproj" />
     <ProjectReference Include="..\EvansSnackMachine.Logic\EvansSnackMachine.Logic.csproj" />
     <ProjectReference Include="..\EvansSnackMachine.Persistence\EvansSnackMachine.Persistence.csproj" />
   </ItemGroup>

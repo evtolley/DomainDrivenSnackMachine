@@ -1,4 +1,4 @@
-using ATM.Logic;
+using ATM.Logic.Entities;
 using FluentAssertions;
 using SharedKernel.ValueObjects;
 using Xunit;
